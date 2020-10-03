@@ -39,10 +39,17 @@ class _TelaLoginState extends State<TelaLogin> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.people, size: 80, color: Colors.black),
-                campoTexto("Usuário", txtUsuario),
-                campoTexto("Senha", txtSenha),
-                botaoLogar(context),
+                Icon(Icons.build, size: 80, color: Colors.black),
+                SizedBox(
+                  width: 300,
+                  child: Column(
+                    children: [
+                      campoTexto("Usuário", txtUsuario, false),
+                      campoTexto("Senha", txtSenha, true),
+                      botaoLogar(context),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -56,7 +63,7 @@ class _TelaLoginState extends State<TelaLogin> {
 //
 // CAMPOS DE TEXTO (TELA LOGIN)
 //
-campoTexto(rotulo, controle){
+campoTexto(rotulo, controle, visibilidade, icone){
   return Container(
     padding: const EdgeInsets.symmetric(vertical: 5),
     child: TextFormField(
@@ -69,7 +76,8 @@ campoTexto(rotulo, controle){
       controller: controle,
       validator: (value) {
         return (value.isEmpty) ? "Usuário ou senha incorreto": null;
-      }
+      },
+      obscureText: visibilidade,
     ),
   );
 }

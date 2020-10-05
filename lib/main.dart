@@ -32,20 +32,26 @@ class _TelaLoginState extends State<TelaLogin> {
         title: Text("Login"),
       ),
 
-      body: SingleChildScrollView(
-          padding: const EdgeInsets.all(20.0),
+      body: Center(
+          //padding: const EdgeInsets.all(20.0),
           child: Form(
             key: _formkey,
+            
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.build, size: 80, color: Colors.black),
+                
                 SizedBox(
                   width: 300,
                   child: Column(
                     children: [
-                      campoTexto("Usuário", txtUsuario, false),
-                      campoTexto("Senha", txtSenha, true),
+                      Container(
+                        padding: const EdgeInsets.all(50.0),
+                        child: //image: //Imagem que represente o LOGOTIPO do App
+                        Icon(Icons.build, size: 80, color: Colors.black),
+                      ),
+                      campoTexto("Usuário", "Insira seu usuário aqui", Icon(Icons.perm_identity), txtUsuario, false),
+                      campoTexto("Senha", "Insira sua senha aqui", Icon(Icons.lock), txtSenha, true),
                       botaoLogar(context),
                     ],
                   ),
@@ -63,7 +69,7 @@ class _TelaLoginState extends State<TelaLogin> {
 //
 // CAMPOS DE TEXTO (TELA LOGIN)
 //
-campoTexto(rotulo, controle, visibilidade, icone){
+campoTexto(rotulo, preenchimento, icone, controle, visibilidade){
   return Container(
     padding: const EdgeInsets.symmetric(vertical: 5),
     child: TextFormField(
@@ -72,6 +78,8 @@ campoTexto(rotulo, controle, visibilidade, icone){
       decoration: InputDecoration(
         labelText: rotulo,
         labelStyle: TextStyle(fontSize: 15, color: Colors.black),
+        hintText: preenchimento,//"Insira seu usuário aqui",
+        icon: icone,//Icon(Icons.lock),
       ),
       controller: controle,
       validator: (value) {

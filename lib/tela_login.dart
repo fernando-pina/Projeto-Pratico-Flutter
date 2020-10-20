@@ -49,12 +49,12 @@ class _TelaLoginState extends State<TelaLogin> {
               RaisedButton(
                 onPressed: (){
                   if(usuario == "fernando.pina" && senha == "123456"){
-                    print("Ir para tela Home.");
+                    Navigator.pushReplacementNamed(context, '/menu');
                   } else {
                     print("Login inválido.");
                   }
                 },
-                child: Text("Login"),
+                child: Text("Entrar"),
               )
             ],
           ),

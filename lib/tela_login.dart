@@ -2,6 +2,7 @@
 // TELA DE LOGIN
 //
 import 'package:flutter/material.dart';
+import 'package:sistema_especialista_flutter/menu.dart';
 
 class TelaLogin extends StatefulWidget {
   @override
@@ -15,8 +16,9 @@ class _TelaLoginState extends State<TelaLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: SizedBox(
+    return Scaffold( //Material(
+      appBar: AppBar(title: Text("Login")),
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Padding(
@@ -48,8 +50,8 @@ class _TelaLoginState extends State<TelaLogin> {
               SizedBox(height: 15),
               RaisedButton(
                 onPressed: (){
-                  if(usuario == "fernando.pina" && senha == "123456"){
-                    Navigator.pushReplacementNamed(context, '/menu');
+                  if(usuario == "fernando.pina" && senha == "123"){
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MenuIniciar()));
                   } else {
                     print("Login inválido.");
                   }
@@ -63,4 +65,3 @@ class _TelaLoginState extends State<TelaLogin> {
     );
   }
 }
-

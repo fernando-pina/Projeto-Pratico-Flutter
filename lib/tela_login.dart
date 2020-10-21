@@ -13,6 +13,7 @@ class _TelaLoginState extends State<TelaLogin> {
 
   String usuario = "";
   String senha = "";
+  String msg = "";
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +27,14 @@ class _TelaLoginState extends State<TelaLogin> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text("INSERIR IMAGEM AQUI!!!"),
               TextField(
                 onChanged: (text){//Escutar o que foi digitado
                   usuario = text;
                 },
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
+                  icon: Icon(Icons.people),
                   labelText: "Usuário",
                   border: OutlineInputBorder(),
                 ),
@@ -43,17 +46,19 @@ class _TelaLoginState extends State<TelaLogin> {
                 },
                 obscureText: true,
                 decoration: InputDecoration(
-                labelText: "Senha",
-                border: OutlineInputBorder(),
+                  icon: Icon(Icons.lock),
+                  labelText: "Senha",
+                  border: OutlineInputBorder(),
                 ),
               ),
               SizedBox(height: 15),
               RaisedButton(
                 onPressed: (){
                   if(usuario == "fernando.pina" && senha == "123"){
+                    msg = "Logando...";
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MenuIniciar()));
                   } else {
-                    print("Login inválido.");
+                    msg = "ATENÇÃO! Login inválido.";
                   }
                 },
                 child: Text("Entrar"),
@@ -61,6 +66,13 @@ class _TelaLoginState extends State<TelaLogin> {
             ],
           ),
         ),
+      ),
+      //setState ??? como usar???
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          child: Text(msg),
+          color: Colors.yellow,
+        )
       ),
     );
   }

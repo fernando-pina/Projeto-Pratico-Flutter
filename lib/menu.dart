@@ -2,6 +2,9 @@
 // TELA DE MENU
 //
 import 'package:flutter/material.dart';
+import 'package:sistema_especialista_flutter/cadastro_cliente.dart';
+import 'package:sistema_especialista_flutter/ordem_servico.dart';
+import 'package:sistema_especialista_flutter/sobre.dart';
 import 'package:sistema_especialista_flutter/tela_login.dart';
 
 class MenuIniciar extends StatefulWidget {
@@ -11,6 +14,8 @@ class MenuIniciar extends StatefulWidget {
 
 class MenuIniciarState extends State<MenuIniciar> {
   
+  String msg = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,20 +26,32 @@ class MenuIniciarState extends State<MenuIniciar> {
         padding: EdgeInsets.all(20),
         child: ListView(
           children: <Widget>[
-            RaisedButton(onPressed: (){},
+            RaisedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => CadastroClientes()));
+            },
             child: Text("Cadastrar Cliente")),
-            RaisedButton(onPressed: (){},
+            RaisedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => OrdemServico()));
+            },
             child: Text("Abrir Ordem de Serviço")),
+            RaisedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Sobre()));
+            },
+            child: Text("Sobre o Sistema")),
             RaisedButton(onPressed: (){
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TelaLogin()));
             },
             child: Text("Logoff")),
             RaisedButton(onPressed: (){},
             child: Text("Sair do Sistema")),
-            RaisedButton(onPressed: (){},
-            child: Text("Sobre o Sistema")),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          child: Text(msg),
+          color: Colors.yellow,
+        )
       ),
     );
   }

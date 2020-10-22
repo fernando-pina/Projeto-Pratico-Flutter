@@ -10,7 +10,7 @@ class OrdemServico extends StatefulWidget {
 
 class _OrdemServicoState extends State<OrdemServico> {
   
-  String msg = "";
+  //String msg = "";
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,10 @@ class _OrdemServicoState extends State<OrdemServico> {
       body:Center(child: Text("Formulários / Botão ENVIAR/ Botão ???")),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          child: Text(msg),
-          color: Colors.yellow,
-        )
-      ),
+          child: Text("Sistema Especialista em Manutenção"),
+        ),
+        color: Colors.yellow,
+      )
     );
   }
 }

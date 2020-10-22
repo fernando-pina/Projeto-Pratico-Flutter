@@ -1,6 +1,8 @@
 //
 // TELA DE LOGIN
 //
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:sistema_especialista_flutter/menu.dart';
 
@@ -17,63 +19,95 @@ class _TelaLoginState extends State<TelaLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( //Material(
+    return Scaffold(
       appBar: AppBar(title: Text("Login")),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("INSERIR IMAGEM AQUI!!!"),
-              TextField(
-                onChanged: (text){//Escutar o que foi digitado
-                  usuario = text;
-                },
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  icon: Icon(Icons.people),
-                  labelText: "Usuário",
-                  border: OutlineInputBorder(),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                //Text("Manutenção de Máquinas", style: TextStyle(fontSize: 25)),
+                SizedBox(height: 22),
+                Text("Sistema Especialista em Manutenção", 
+                  style: TextStyle(
+                    fontSize: 20, 
+                    fontWeight: FontWeight.bold
+                  ),
                 ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                onChanged: (text){//Escutar o que foi digitado
-                  senha = text;
-                },
-                obscureText: true,
-                decoration: InputDecoration(
-                  icon: Icon(Icons.lock),
-                  labelText: "Senha",
-                  border: OutlineInputBorder(),
+                SizedBox(height: 10),
+                Container(
+                  child: Image.asset("assets/imagens/rodas_dentadas.jpg"),
                 ),
-              ),
-              SizedBox(height: 15),
-              RaisedButton(
-                onPressed: (){
-                  if(usuario == "fernando.pina" && senha == "123"){
-                    msg = "Logando...";
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MenuIniciar()));
-                  } else {
-                    msg = "ATENÇÃO! Login inválido.";
-                  }
-                },
-                child: Text("Entrar"),
-              )
-            ],
+                SizedBox(height: 30),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextField(
+                      onChanged: (text){ //Escutar o que foi digitado
+                        usuario = text;
+                      },
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.people),
+                        labelText: "Usuário",
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      onChanged: (text){ //Escutar o que foi digitado
+                        senha = text;
+                      },
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        icon: Icon(Icons.lock),
+                        labelText: "Senha",
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    RaisedButton(
+                      onPressed: (){
+                        setState(() { //Atualiza o estado da tela
+                        
+                          if(usuario == "fernando.pina" && senha == "123"){
+                            //msg = "Logando...";
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MenuIniciar()));
+                          } else {
+                            
+                            // final snackBar = SnackBar(content: Text('ANTEÇÃO! Login inválido.'));
+                            msg = "ATENÇÃO! Login inválido.";
+                            // Scaffold.of(context).showSnackBar(snackBar);
+                          }
+                        });
+                        
+                      },
+                      child: Text("Entrar"),
+                    ),
+                    SizedBox(height: 10),
+                    Text(msg, 
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 20, 
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
-      //setState ??? como usar???
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          child: Text(msg),
-          color: Colors.yellow,
-        )
-      ),
+          child: Text(""),
+        ),
+        color: Colors.yellow,
+      )
     );
   }
 }

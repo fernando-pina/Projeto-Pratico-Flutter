@@ -14,7 +14,7 @@ class MenuIniciar extends StatefulWidget {
 
 class MenuIniciarState extends State<MenuIniciar> {
   
-  String msg = "";
+  //String msg = "";
 
   @override
   Widget build(BuildContext context) {
@@ -26,33 +26,47 @@ class MenuIniciarState extends State<MenuIniciar> {
         padding: EdgeInsets.all(20),
         child: ListView(
           children: <Widget>[
-            RaisedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => CadastroClientes()));
-            },
-            child: Text("Cadastrar Cliente")),
-            RaisedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => OrdemServico()));
-            },
-            child: Text("Abrir Ordem de Serviço")),
-            RaisedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Sobre()));
-            },
-            child: Text("Sobre o Sistema")),
-            RaisedButton(onPressed: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TelaLogin()));
-            },
-            child: Text("Logoff")),
-            RaisedButton(onPressed: (){},
-            child: Text("Sair do Sistema")),
+            RaisedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => CadastroClientes()));
+              },
+              child: Text("Cadastrar Cliente"),
+            ),
+
+            RaisedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => OrdemServico()));
+              },
+              child: Text("Abrir Ordem de Serviço"),
+            ),
+
+            RaisedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Sobre()));
+              },
+              child: Text("Sobre o Sistema"),
+            ),
+
+            RaisedButton(
+              onPressed: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TelaLogin()));
+              },
+              child: Text("Logoff"),
+            ),
+
+            RaisedButton(
+              onPressed: (){},
+              child: Text("Sair do Sistema"),
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          child: Text(msg),
-          color: Colors.yellow,
-        )
-      ),
+          child: Text("Sistema Especialista em Manutenção"),
+        ),
+        color: Colors.yellow,
+      )
     );
   }
 }

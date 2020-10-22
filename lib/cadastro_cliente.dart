@@ -10,7 +10,7 @@ class CadastroClientes extends StatefulWidget {
 
 class _CadastroClientesState extends State<CadastroClientes> {
   
-  String msg = "";
+  //String msg = "";
   
   @override
   Widget build(BuildContext context) {
@@ -19,10 +19,10 @@ class _CadastroClientesState extends State<CadastroClientes> {
       body:Center(child: Text("Formulários...")),
       bottomNavigationBar: BottomAppBar(
         child: Container(
-          child: Text(msg),
-          color: Colors.yellow,
-        )
-      ),
+          child: Text("Sistema Especialista em Manutenção"),
+        ),
+        color: Colors.yellow,
+      )
     );
   }
 }

@@ -43,12 +43,12 @@ class _OrdemServicoState extends State<OrdemServico> {
                   Text("Ordem de Serviço", style: TextStyle(fontSize: 30)),
                 ],
               ),
-              campoTexto("OS", txtOS),
+              campoTexto("OS de Número", txtOS),
               SizedBox(height: 50),
-              Text("DADOS DO SERVEIÇO TÉCNICO AUTORIZADO", style: TextStyle(fontStyle: FontStyle.italic)),
+              Text("DADOS DO SERVEIÇO TÉCNICO AUTORIZADO", style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
               campoTexto("Nome do Concessionário", txtNomeDoConcessionario),
               SizedBox(height: 50),
-              Text("DADOS DO CLIENTE", style: TextStyle(fontStyle: FontStyle.italic)),
+              Text("DADOS DO CLIENTE", style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
               campoTexto("Nome", txtNomeCliente),
               campoTexto("Telefone", txtTelefoneCliente),
               campoTexto("Endereco", txtEnderecoCliente),
@@ -56,14 +56,14 @@ class _OrdemServicoState extends State<OrdemServico> {
               campoTexto("Estado", txtEstadoCliente),
               campoTexto("CEP", txtCEPCliente),
               SizedBox(height: 50),
-              Text("IDENTIFICAÇÃO DO EQUIPAMENTO", style: TextStyle(fontStyle: FontStyle.italic)),
+              Text("IDENTIFICAÇÃO DO EQUIPAMENTO", style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
               campoTexto("Marca da Máquina", txtMarcaDaMaquina),
               campoTexto("Número de Série", txtNumeroSerie),
               SizedBox(height: 50),
-              Text("REGISTRO DA SOLICITAÇÃO", style: TextStyle(fontStyle: FontStyle.italic)),
+              Text("REGISTRO DA SOLICITAÇÃO", style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
               campoTexto("Ocorrência", txtOcorrencia),
               SizedBox(height: 50),
-              Text("FALHAS OU OBSERVAÇÕES", style: TextStyle(fontStyle: FontStyle.italic)),
+              Text("FALHAS OU OBSERVAÇÕES", style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
               campoTexto("Causas Prováveis", txtCausasProvaveis),
               campoTexto("Ação Tomada", txtAcaoTomada),
             ]
@@ -98,3 +98,5 @@ campoTexto(rotulo, controle){
     ),
   );
 }
+
+

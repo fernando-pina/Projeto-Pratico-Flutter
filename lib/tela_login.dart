@@ -15,7 +15,6 @@ class _TelaLoginState extends State<TelaLogin> {
 
   String usuario = "";
   String senha = "";
-  String msg = "";
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,6 @@ class _TelaLoginState extends State<TelaLogin> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                //Text("Manutenção de Máquinas", style: TextStyle(fontSize: 25)),
                 SizedBox(height: 22),
                 Text("Sistema Especialista em Manutenção", 
                   style: TextStyle(
@@ -74,27 +72,36 @@ class _TelaLoginState extends State<TelaLogin> {
                         setState(() { //Atualiza o estado da tela
                         
                           if(usuario == "fernando.pina" && senha == "123"){
-                            //msg = "Logando...";
                             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MenuIniciar()));
                           } else {
-                            
-                            // final snackBar = SnackBar(content: Text('ANTEÇÃO! Login inválido.'));
-                            msg = "ATENÇÃO! Login inválido.";
-                            // Scaffold.of(context).showSnackBar(snackBar);
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context){
+                                return AlertDialog(
+                                  title: Text('ATENÇÃO:'),
+                                  content: Text('Login inválido.'),
+                                  actions: <Widget>[
+                                    TextButton(child: Text('Ok'), onPressed: () {
+                                      Navigator.pop(context, MaterialPageRoute(builder:(context) => TelaLogin()));
+                                    }),
+                                  ],
+                                );
+                              }
+                            );
                           }
                         });
                         
                       },
                       child: Text("Entrar"),
                     ),
-                    SizedBox(height: 10),
-                    Text(msg, 
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 20, 
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
+                    // SizedBox(height: 10),
+                    // Text(msg, 
+                    //   style: TextStyle(
+                    //     color: Colors.red,
+                    //     fontSize: 20, 
+                    //     decoration: TextDecoration.underline,
+                    //   ),
+                    // ),
                   ],
                 ),
               ],

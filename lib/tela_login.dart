@@ -68,6 +68,7 @@ class _TelaLoginState extends State<TelaLogin> {
                     ),
                     SizedBox(height: 15),
                     RaisedButton(
+                      child: Text("Entrar"),
                       onPressed: (){
                         setState(() { //Atualiza o estado da tela
                         
@@ -90,18 +91,8 @@ class _TelaLoginState extends State<TelaLogin> {
                             );
                           }
                         });
-                        
                       },
-                      child: Text("Entrar"),
                     ),
-                    // SizedBox(height: 10),
-                    // Text(msg, 
-                    //   style: TextStyle(
-                    //     color: Colors.red,
-                    //     fontSize: 20, 
-                    //     decoration: TextDecoration.underline,
-                    //   ),
-                    // ),
                   ],
                 ),
               ],

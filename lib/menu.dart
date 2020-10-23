@@ -13,8 +13,6 @@ class MenuIniciar extends StatefulWidget {
 }
 
 class MenuIniciarState extends State<MenuIniciar> {
-  
-  //String msg = "";
 
   @override
   Widget build(BuildContext context) {

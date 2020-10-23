@@ -75,17 +75,12 @@ class _CadastroClientesState extends State<CadastroClientes> {
                             content: Text('Cadastrado com sucesso!'),
                             actions: <Widget>[
                               TextButton(child: Text('Ok'), onPressed: () {
-                                //Navigator.of(context).pop();
+                                Navigator.pop(context, MaterialPageRoute(builder:(context) => CadastroClientes()));
                               }),
                             ],
                           );
                         }
                       );
-
-                      //_cadastrar();
-
-                      //_reset();
-
                     }
                   }
                 )
@@ -122,41 +117,3 @@ campoTexto(rotulo, controle){
     ),
   );
 }
-
-
-// botaoCadastrar(BuildContext context){
-//   return Container(
-//     padding: const EdgeInsets.only(top: 20),
-//     child: RaisedButton(
-//       child: Text("Cadastrar"),
-//       onPressed: () {
-//         if(_formkey.currentState.validate()){
-                  
-//           //_cadastrar();
-
-//           _reset();
-
-//         }
-//       }
-//     )
-//   );
-// }
-
-
-// void _reset(){
-//   setState((){
-//     txtOS.text = "";
-//     txtNomeDoConcessionario.text = "";
-//     txtNomeCliente.text = "";
-//     txtTelefoneCliente.text = "";
-//     txtEnderecoCliente.text = "";
-//     txtCidadeCliente.text = "";
-//     txtEstadoCliente.text = "";
-//     txtCEPCliente.text = "";
-//     txtMarcaDaMaquina.text = "";
-//     txtNumeroSerie.text = "";
-//     txtOcorrencia.text = "";
-//     txtCausasProvaveis.text = "";
-//     txtAcaoTomada.text = "";
-//   });
-// }

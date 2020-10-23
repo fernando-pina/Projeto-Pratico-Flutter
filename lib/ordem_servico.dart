@@ -66,6 +66,48 @@ class _OrdemServicoState extends State<OrdemServico> {
               Text("FALHAS OU OBSERVAÇÕES", style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
               campoTexto("Causas Prováveis", txtCausasProvaveis),
               campoTexto("Ação Tomada", txtAcaoTomada),
+              //Botão
+              Container(
+                padding: const EdgeInsets.only(top: 20),
+                child: RaisedButton(
+                  child: Text("Abrir"),
+                  onPressed: () {
+                    if(_formkey.currentState.validate()){
+
+                      setState((){
+                        txtOS.text = "";
+                        txtNomeDoConcessionario.text = "";
+                        txtNomeCliente.text = "";
+                        txtTelefoneCliente.text = "";
+                        txtEnderecoCliente.text = "";
+                        txtCidadeCliente.text = "";
+                        txtEstadoCliente.text = "";
+                        txtCEPCliente.text = "";
+                        txtMarcaDaMaquina.text = "";
+                        txtNumeroSerie.text = "";
+                        txtOcorrencia.text = "";
+                        txtCausasProvaveis.text = "";
+                        txtAcaoTomada.text = "";
+                      });
+
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context){
+                          return AlertDialog(
+                            title: Text(''),
+                            content: Text('OS criada com sucesso!'),
+                            actions: <Widget>[
+                              TextButton(child: Text('Ok'), onPressed: () {
+                                Navigator.pop(context, MaterialPageRoute(builder:(context) => OrdemServico()));
+                              }),
+                            ],
+                          );
+                        }
+                      );
+                    }
+                  }
+                )
+              ),
             ]
           ),
         ),

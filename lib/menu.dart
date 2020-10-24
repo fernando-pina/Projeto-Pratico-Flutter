@@ -2,6 +2,7 @@
 // TELA DE MENU
 //
 import 'package:flutter/material.dart';
+import 'package:sistema_especialista_flutter/base_dados_clientes.dart';
 import 'package:sistema_especialista_flutter/cadastro_cliente.dart';
 import 'package:sistema_especialista_flutter/ordem_servico.dart';
 import 'package:sistema_especialista_flutter/sobre.dart';
@@ -29,6 +30,13 @@ class MenuIniciarState extends State<MenuIniciar> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => CadastroClientes()));
               },
               child: Text("Cadastrar Cliente"),
+            ),
+
+             RaisedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => BaseClientes()));
+              },
+              child: Text("Ver Lista de Cliente"),
             ),
 
             RaisedButton(

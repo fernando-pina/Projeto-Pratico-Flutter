@@ -36,8 +36,8 @@ class _CadastroClientesState extends State<CadastroClientes> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.people, size: 80),
-                  Text("Clientes", style: TextStyle(fontSize: 30)),
+                  Icon(Icons.people, size: 40),
+                  Text("Clientes", style: TextStyle(fontSize: 25)),
                 ],
               ),
               campoTexto("Nome", txtNome),
@@ -72,7 +72,7 @@ class _CadastroClientesState extends State<CadastroClientes> {
                         builder: (BuildContext context){
                           return AlertDialog(
                             title: Text(''),
-                            content: Text('Cadastrado com sucesso!'),
+                            content: Text('Cadastro realizado com sucesso!'),
                             actions: <Widget>[
                               TextButton(child: Text('Ok'), onPressed: () {
                                 Navigator.pop(context, MaterialPageRoute(builder:(context) => CadastroClientes()));

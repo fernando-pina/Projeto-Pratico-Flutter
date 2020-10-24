@@ -82,7 +82,7 @@ class _TelaLoginState extends State<TelaLogin> {
                                   title: Text('ATENÇÃO:'),
                                   content: Text('Login inválido.'),
                                   actions: <Widget>[
-                                    TextButton(child: Text('Ok'), onPressed: () {
+                                    TextButton(child: Text('Fechar'), onPressed: () {
                                       Navigator.pop(context, MaterialPageRoute(builder:(context) => TelaLogin()));
                                     }),
                                   ],

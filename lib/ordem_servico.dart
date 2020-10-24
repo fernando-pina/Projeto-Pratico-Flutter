@@ -28,7 +28,7 @@ class _OrdemServicoState extends State<OrdemServico> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Abertura de Ordem de Serviços")),
+      appBar: AppBar(title: Text("Abertura de OS")),
       body:SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Form(
@@ -39,8 +39,8 @@ class _OrdemServicoState extends State<OrdemServico> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.description, size: 80),
-                  Text("Ordem de Serviço", style: TextStyle(fontSize: 30)),
+                  Icon(Icons.description, size: 40),
+                  Text("Ordem de Serviço", style: TextStyle(fontSize: 25)),
                 ],
               ),
               campoTexto("OS de Número", txtOS),
@@ -95,7 +95,7 @@ class _OrdemServicoState extends State<OrdemServico> {
                         builder: (BuildContext context){
                           return AlertDialog(
                             title: Text(''),
-                            content: Text('OS criada com sucesso!'),
+                            content: Text('Ordem de Serviço aberta com sucesso!'),
                             actions: <Widget>[
                               TextButton(child: Text('Ok'), onPressed: () {
                                 Navigator.pop(context, MaterialPageRoute(builder:(context) => OrdemServico()));

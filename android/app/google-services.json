@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "361212490541",
+    "firebase_url": "https://app-sistema-especialista.firebaseio.com",
+    "project_id": "app-sistema-especialista",
+    "storage_bucket": "app-sistema-especialista.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361212490541:android:ae0dd246f04c9ece2219a4",
+        "android_client_info": {
+          "package_name": "com.example.sistema_especialista_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361212490541-nhhjn3r1fuccrgj82l1g9al3pv0i7j1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTMUYfLmYhVfs04AF7JVrZQxi1Uy0IE7k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361212490541-nhhjn3r1fuccrgj82l1g9al3pv0i7j1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

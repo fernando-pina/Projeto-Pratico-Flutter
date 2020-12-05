@@ -2,11 +2,6 @@
 // TELA DE MENU
 //
 import 'package:flutter/material.dart';
-import 'package:sistema_especialista_flutter/base_dados_clientes.dart';
-import 'package:sistema_especialista_flutter/cadastro_cliente.dart';
-import 'package:sistema_especialista_flutter/ordem_servico.dart';
-import 'package:sistema_especialista_flutter/sobre.dart';
-import 'package:sistema_especialista_flutter/tela_login.dart';
 
 class MenuIniciar extends StatefulWidget {
   @override
@@ -27,39 +22,58 @@ class MenuIniciarState extends State<MenuIniciar> {
           children: <Widget>[
             RaisedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CadastroClientes()));
+                Navigator.pushNamed(context, '/cadastroClientes');
               },
               child: Text("Cadastrar Cliente"),
             ),
 
-             RaisedButton(
+            SizedBox(height: 10),
+            
+            RaisedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => BaseClientes()));
+                Navigator.pushNamed(context, '/listaClientes');
               },
               child: Text("Ver Lista de Cliente"),
             ),
 
+            SizedBox(height: 10),
+ 
             RaisedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => OrdemServico()));
+                Navigator.pushNamed(context, '/ordemServico');
               },
               child: Text("Abrir Ordem de Serviço"),
             ),
 
+            SizedBox(height: 10),
+ 
             RaisedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Sobre()));
+                Navigator.pushNamed(context, '/listaOrdensServicos');
+              },
+              child: Text("Ver Lista de Ordens de Serviços"),
+            ),
+
+            SizedBox(height: 10),
+ 
+            RaisedButton(
+              onPressed: (){
+                Navigator.pushNamed(context, '/sobre');
               },
               child: Text("Sobre o Sistema"),
             ),
 
+            SizedBox(height: 10),
+ 
             RaisedButton(
               onPressed: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TelaLogin()));
+                Navigator.pushNamed(context, '/login');
               },
               child: Text("Logoff"),
             ),
 
+            SizedBox(height: 10),
+ 
             RaisedButton(
               onPressed: (){},
               child: Text("Sair do Sistema"),

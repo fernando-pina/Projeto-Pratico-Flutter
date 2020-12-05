@@ -1,6 +1,7 @@
 //
 // TELA DE ABERTURA DE ORDEM DE SERVIÇOS
 //
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class OrdemServico extends StatefulWidget {
@@ -9,26 +10,71 @@ class OrdemServico extends StatefulWidget {
 }
 
 class _OrdemServicoState extends State<OrdemServico> {
+
+  var db = FirebaseFirestore.instance;
+  
   GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   TextEditingController txtOS = TextEditingController();
   TextEditingController txtNomeDoConcessionario = TextEditingController();
   TextEditingController txtNomeCliente = TextEditingController();
   TextEditingController txtTelefoneCliente = TextEditingController();
-  TextEditingController txtEnderecoCliente = TextEditingController();
   TextEditingController txtCidadeCliente = TextEditingController();
   TextEditingController txtEstadoCliente = TextEditingController();
-  TextEditingController txtCEPCliente = TextEditingController();
   TextEditingController txtMarcaDaMaquina = TextEditingController();
   TextEditingController txtNumeroSerie = TextEditingController();
   TextEditingController txtOcorrencia = TextEditingController();
   TextEditingController txtCausasProvaveis = TextEditingController();
   TextEditingController txtAcaoTomada = TextEditingController();
 
+  //Recuperar um DOCUMENTO  a partir do ID
+  void getDocumentById(String id) async{
+    await db.collection("ordens de servico").doc(id).get()
+      .then((doc){
+
+        txtOS.text = doc.data()['os_de_numero'];
+        txtNomeDoConcessionario.text = doc.data()['nome_concessionario'];
+        txtNomeCliente.text = doc.data()['nome_cliente'];
+        txtTelefoneCliente.text = doc.data()['telefone_cliente_contato'];
+        txtCidadeCliente.text = doc.data()['cidade_cliente'];
+        txtEstadoCliente.text = doc.data()['estado_cliente'];
+        txtMarcaDaMaquina.text = doc.data()['marca_da_maquina'];
+        txtNumeroSerie.text = doc.data()['numero_serie'];
+        txtOcorrencia.text = doc.data()['ocorrencia'];
+        txtCausasProvaveis.text = doc.data()['causas_provaveis'];
+        txtAcaoTomada.text = doc.data()['acao_tomada'];
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final String id = ModalRoute.of(context).settings.arguments;
+
+    //Como a tela de cadastro será utilizada em dois contexto
+    //contexto 1: quando o botão '+' de adicionar, da 'tela principal', for acionado
+    //a 'tela de cadastro' será aberta para que o cadastro seja realizado
+    //contexto 2: quando algum dos itens da lista for selecionado, a 'tela de cadastro'
+    //será aberta para que a edição seja realizada.
+    if ( id != null ){
+      if (txtOS.text == '' && txtNomeDoConcessionario.text == '' && txtNomeCliente.text == '' && txtTelefoneCliente.text == '' && txtCidadeCliente.text == '' && txtEstadoCliente.text == '' && txtMarcaDaMaquina.text == '' && txtNumeroSerie.text == '' && txtOcorrencia.text == '' && txtCausasProvaveis.text == '' && txtAcaoTomada.text == ''){
+        getDocumentById(id);
+      }
+    }
+
     return Scaffold(
-      appBar: AppBar(title: Text("Abertura de OS")),
+      appBar: AppBar(
+        title: Text("Abertura de OS"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home_outlined),
+            onPressed: (){
+              Navigator.pushNamed(context, '/menu');
+            },
+          )
+        ],
+      ),
       body:SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Form(
@@ -51,10 +97,8 @@ class _OrdemServicoState extends State<OrdemServico> {
               Text("DADOS DO CLIENTE", style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
               campoTexto("Nome", txtNomeCliente),
               campoTexto("Telefone", txtTelefoneCliente),
-              campoTexto("Endereco", txtEnderecoCliente),
               campoTexto("Cidade", txtCidadeCliente),
               campoTexto("Estado", txtEstadoCliente),
-              campoTexto("CEP", txtCEPCliente),
               SizedBox(height: 50),
               Text("IDENTIFICAÇÃO DO EQUIPAMENTO", style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold)),
               campoTexto("Marca da Máquina", txtMarcaDaMaquina),
@@ -70,41 +114,73 @@ class _OrdemServicoState extends State<OrdemServico> {
               Container(
                 padding: const EdgeInsets.only(top: 20),
                 child: RaisedButton(
-                  child: Text("Abrir"),
-                  onPressed: () {
-                    if(_formkey.currentState.validate()){
+                  child: Text("Abrir / Salvar"),
+                  onPressed: () async{
 
-                      setState((){
-                        txtOS.text = "";
-                        txtNomeDoConcessionario.text = "";
-                        txtNomeCliente.text = "";
-                        txtTelefoneCliente.text = "";
-                        txtEnderecoCliente.text = "";
-                        txtCidadeCliente.text = "";
-                        txtEstadoCliente.text = "";
-                        txtCEPCliente.text = "";
-                        txtMarcaDaMaquina.text = "";
-                        txtNumeroSerie.text = "";
-                        txtOcorrencia.text = "";
-                        txtCausasProvaveis.text = "";
-                        txtAcaoTomada.text = "";
-                      });
-
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context){
-                          return AlertDialog(
-                            title: Text(''),
-                            content: Text('Ordem de Serviço aberta com sucesso!'),
-                            actions: <Widget>[
-                              TextButton(child: Text('Ok'), onPressed: () {
-                                Navigator.pop(context, MaterialPageRoute(builder:(context) => OrdemServico()));
-                              }),
-                            ],
-                          );
-                        }
-                      );
+                    if (id == null){
+                        //ADICIONAR um novo DOCUMENTO a COLEÇÃO
+                        await db.collection("ordens de servico").add(
+                          {
+                            "os_de_numero" : txtOS.text,
+                            "nome_concessionario" : txtNomeDoConcessionario.text,
+                            "nome_cliente" : txtNomeCliente.text,
+                            "telefone_cliente_contato" : txtTelefoneCliente.text,
+                            "cidade_cliente" : txtCidadeCliente.text,
+                            "estado_cliente" : txtEstadoCliente.text,
+                            "marca_da_maquina" : txtMarcaDaMaquina.text,
+                            "numero_serie" : txtNumeroSerie.text,
+                            "ocorrencia" : txtOcorrencia.text,
+                            "causas_provaveis" : txtCausasProvaveis.text,
+                            "acao_tomada" : txtAcaoTomada.text
+                          }
+                        );
+                    }else{
+                        //ATUALIZAR dados do DOCUMENTO
+                        await db.collection("ordens de servico").doc(id).update(
+                          {
+                            "os_de_numero" : txtOS.text,
+                            "nome_concessionario" : txtNomeDoConcessionario.text,
+                            "nome_cliente" : txtNomeCliente.text,
+                            "telefone_cliente_contato" : txtTelefoneCliente.text,
+                            "cidade_cliente" : txtCidadeCliente.text,
+                            "estado_cliente" : txtEstadoCliente.text,
+                            "marca_da_maquina" : txtMarcaDaMaquina.text,
+                            "numero_serie" : txtNumeroSerie.text,
+                            "ocorrencia" : txtOcorrencia.text,
+                            "causas_provaveis" : txtCausasProvaveis.text,
+                            "acao_tomada" : txtAcaoTomada.text
+                          }
+                        );
+                        Navigator.pushNamed(context, '/listaOrdensServicos');
                     }
+
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context){
+                        return AlertDialog(
+                          title: Text(''),
+                          content: Text('Ordem de Serviço aberta com sucesso!'),
+                          actions: <Widget>[
+                            TextButton(child: Text('Ok'), onPressed: () {
+                              Navigator.pop(context);
+
+                              txtOS.text = "";
+                              txtNomeDoConcessionario.text = "";
+                              txtNomeCliente.text = "";
+                              txtTelefoneCliente.text = "";
+                              txtCidadeCliente.text = "";
+                              txtEstadoCliente.text = "";
+                              txtMarcaDaMaquina.text = "";
+                              txtNumeroSerie.text = "";
+                              txtOcorrencia.text = "";
+                              txtCausasProvaveis.text = "";
+                              txtAcaoTomada.text = "";
+
+                            }),
+                          ],
+                        );
+                      }
+                    );
                   }
                 )
               ),

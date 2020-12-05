@@ -7,7 +7,17 @@ class Sobre extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sobre")),
+      appBar: AppBar(
+        title: Text("Sobre"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.home_outlined),
+            onPressed: (){
+              Navigator.pushNamed(context, '/menu');
+            },
+          )
+        ],
+      ),
       body:Padding(
         padding: const EdgeInsets.all(35.0),
         child: ListView(children: <Widget>[

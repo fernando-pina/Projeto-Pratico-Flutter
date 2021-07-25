@@ -1,2 +1,2 @@
 # Projeto-Pratico-Flutter
-Aplicativo desenvolvido em Flutter para atender aos créditos da disciplina - PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS - da Fatec de Ribeirão Preto. O tema escolhido foi um SISTEMA ESPECIALISTA EM MANUTENÇÃO.
+Aplicativo CRUD, desenvolvido em Flutter durante a disciplina - PROGRAMAÇÃO PARA DISPOSITIVOS MÓVEIS - no 3º semestre do curso de Análise e Desenvolvimento de Softwares da Fatec de Ribeirão Preto.
